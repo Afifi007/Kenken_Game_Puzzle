@@ -1,14 +1,18 @@
+from turtle import clear
 import test_gen
 
 import sys, pygame as pg
 
 pg.init()
+n = 9
+f = 1
 screen_size = 750,750
 screen = pg.display.set_mode(screen_size)
-font = pg.font.SysFont(None, 80)
+font = pg.font.SysFont(None, 30)
+font1 = pg.font.SysFont(None, 20)
 pg.display.set_caption('Kenken')
 
-size_1, number_cage = test_gen.generate(3)
+size_1, number_cage = test_gen.generate(n)
 # print(size_1)
 print(number_cage)
 # print("len(number_cage): ", len(number_cage))
@@ -24,22 +28,40 @@ list_op =[]
 list_co=[]
 dic_1 = {}
 for i in range(len(number_cage)):
-  # print(type(number_cage[i]))
-  # print(number_cage[i][-1])
-  #1) store in lists
-  list_num.append(number_cage[i][-1])
-  list_op.append(number_cage[i][-2])
-  list_co.append(number_cage[i][0])
-  # #2)store in dic.
-  # dic_1['cells'] = number_cage[i][:-2]
-  # dic_1['op'] = number_cage[i][:-2]
-  # print(dic_1)
+    # print(type(number_cage[i]))
+    # print(number_cage[i][-1])
+    #1) store in lists
+    list_num.append(number_cage[i][-1])
+    list_op.append(number_cage[i][-2])
+    list_co.append(number_cage[i][0])
+    # #2)store in dic.
+    # dic_1['cells'] = number_cage[i][:-2]
+    # dic_1['op'] = number_cage[i][:-2]
+    # print(dic_1)
 
 print(list_num)
 print(list_op)
 print(list_co)
 print(len(list_co))
+print('X',list_co[0][0][0])
+print('Y',list_co[0][0][1])
+  
+def draw_op(size ,li_num,lis_op,lis_cells):
 
+  offset = (size/2)
+  for i in range(0,len(lis_cells)):
+      op = list_op[i]
+      op_value = li_num [i]
+      #print('op + value',str(op)+str(op_value))
+      x ,y= lis_cells[i][0][0] , lis_cells[i][0][1]
+      row = x-1
+      col = y- 1
+      op_text  =(str(op)+str(op_value))
+      #op_text = font.render(str(op)+str(op_value), True, (0,0,0))
+      n_text = font1.render(op_text, True, pg.Color("black"))
+      text_rect = n_text.get_rect()
+      text_rect.center = ((col * size) + offset + 5, (row * size) + offset - 2)
+      screen.blit(n_text,text_rect)
 
 number_grid_9x9 = [
   [1,2,3,4,5,6,7,8,9],
@@ -58,7 +80,7 @@ number_grid_3x3 = [
   [7,8,9],
 ]
 
-def draw_background():
+def draw_background(size):
   screen.fill(pg.Color("white"))
   pg.draw.rect(screen, pg.Color("black"), pg.Rect(15, 15, 720, 720), 10)
   #720/9=80
@@ -68,7 +90,7 @@ def draw_background():
   #720/5=144
   #720/4=180
   #720/3=240
-  size = 240
+  
   i = 1
   while (i*size) < 720:
     line_width = 5 if i % 3 > 0 else 10
@@ -78,31 +100,31 @@ def draw_background():
     i += 1
 
 
-def draw_numbers(size):
+def draw_numbers(size,n_row,n_col):
   row = 0
   # offset = 35
-  offset = (size/2) -5
+  offset = (size/2) +10
   # offset = 115 #(size/2) -5
-  n_row = 3
-  n_col = 3
+  
   while row < n_row:
     col = 0
     while col < n_col:
-      output = number_grid_3x3[row][col]
+      output = number_grid_9x9[row][col]
       # print(str(output))
       n_text = font.render(str(output), True, pg.Color("black"))
-      screen.blit(n_text,pg.Vector2((col * size) + offset + 5, (row * size) + offset - 2))
-      # screen.blit(n_text,pg.Vector2((col * 80) + offset + 5, (row * 80) + offset - 2))
+      screen.blit(n_text,pg.Vector2((col * size) + offset + 5, (row * size) + offset - 2)) #draw @ center
+      # screen.blit(n_text,pg.Vector2((col * 80) + offset + 5, (row * 80) + of
       col += 1
-    row += 1
-
+    row += 1  
 
 def game_loop():
+  size = 720/n
   for event in pg.event.get():
     if event.type == pg.QUIT: sys.exit()
-
-  draw_background()
-  draw_numbers(240)
+   
+  draw_background(size)
+  draw_numbers(size , 9,9)
+  draw_op(size,list_num,list_op,list_co)  
   pg.display.flip()
 
 
