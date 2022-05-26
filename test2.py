@@ -20,74 +20,78 @@ class board_3(QMainWindow):
     self.b1.clicked.connect(self.clicked)
 
     # creating a QLineEdit object
-    self.line_edit_1 = QtWidgets.QLineEdit(self)
+    self.line_edit_1x1 = QtWidgets.QLineEdit(self)
     # setting geometry
-    self.line_edit_1.setGeometry(80, 80, 80, 80)
+    self.line_edit_1x1.setGeometry(80, 80, 80, 80*2)
     # adding action to the line edit when enter key is pressed
-    self.line_edit_1.returnPressed.connect(lambda: do_action())
+    self.line_edit_1x1.returnPressed.connect(lambda: do_action())
     self.label_1 = QtWidgets.QLabel(self)
     self.label_1.setText("+4")
     self.label_1.move(85,85)
 
+    self.label_14 = QtWidgets.QLabel(self)
+    self.label_14.setText("2")
+    self.label_14.move(80+30, 80*2+20)
+
     # creating a QLineEdit object
-    self.line_edit_2 = QtWidgets.QLineEdit(self)
+    self.line_edit_1x2 = QtWidgets.QLineEdit(self)
     # setting geometry
-    self.line_edit_2.setGeometry(80*2, 80, 80, 80)
+    self.line_edit_1x2.setGeometry(80*2, 80, 80*2, 80)
     # adding action to the line edit when enter key is pressed
-    self.line_edit_2.returnPressed.connect(lambda: do_action())
+    self.line_edit_1x2.returnPressed.connect(lambda: do_action())
     self.label_2 = QtWidgets.QLabel(self)
     self.label_2.setText("+10")
     self.label_2.move(80*2+5,85)
 
-    # creating a QLineEdit object
-    self.line_edit_3 = QtWidgets.QLineEdit(self)
-    # setting geometry
-    self.line_edit_3.setGeometry(80*3, 80, 80, 80)
-    # adding action to the line edit when enter key is pressed
-    self.line_edit_3.returnPressed.connect(lambda: do_action())
+    # # creating a QLineEdit object
+    # self.line_edit_1x3 = QtWidgets.QLineEdit(self)
+    # # setting geometry
+    # self.line_edit_1x3.setGeometry(80*3, 80, 80, 80)
+    # # adding action to the line edit when enter key is pressed
+    # self.line_edit_1x3.returnPressed.connect(lambda: do_action())
     self.label_3 = QtWidgets.QLabel(self)
     self.label_3.setText("+5")
     self.label_3.move(80*3+5,85)
 
-    # creating a QLineEdit object
-    self.line_edit_4 = QtWidgets.QLineEdit(self)
-    # setting geometry
-    self.line_edit_4.setGeometry(80, 80*2, 80, 80)
-    # adding action to the line edit when enter key is pressed
-    self.line_edit_4.returnPressed.connect(lambda: do_action())
+    # # creating a QLineEdit object
+    # self.line_edit_2x1 = QtWidgets.QLineEdit(self)
+    # # setting geometry
+    # self.line_edit_2x1.setGeometry(80, 80*2, 80, 80)
+    # # adding action to the line edit when enter key is pressed
+    # self.line_edit_2x1.returnPressed.connect(lambda: do_action())
 
     # creating a QLineEdit object
-    self.line_edit_5 = QtWidgets.QLineEdit(self)
+    self.line_edit_2x2 = QtWidgets.QLineEdit(self)
     # setting geometry
-    self.line_edit_5.setGeometry(80*2, 80*2, 80, 80)
+    self.line_edit_2x2.setGeometry(80*2, 80*2, 80, 80)
     # adding action to the line edit when enter key is pressed
-    self.line_edit_5.returnPressed.connect(lambda: do_action())
+    self.line_edit_2x2.returnPressed.connect(lambda: do_action())
 
     # creating a QLineEdit object
-    self.line_edit_6 = QtWidgets.QLineEdit(self)
+    self.line_edit_2x3 = QtWidgets.QLineEdit(self)
     # setting geometry
-    self.line_edit_6.setGeometry(80*3, 80*2, 80, 80)
+    self.line_edit_2x3.setGeometry(80*3, 80*2, 80, 80*2)
     # adding action to the line edit when enter key is pressed
-    self.line_edit_6.returnPressed.connect(lambda: do_action())
+    self.line_edit_2x3.returnPressed.connect(lambda: do_action())
 
     # creating a QLineEdit object
-    self.line_edit_7 = QtWidgets.QLineEdit(self)
+    self.line_edit_3x1 = QtWidgets.QLineEdit(self)
     # setting geometry
-    self.line_edit_7.setGeometry(80, 80*3, 80, 80)
+    self.line_edit_3x1.setGeometry(80, 80*3, 80*2, 80)
     # adding action to the line edit when enter key is pressed
-    self.line_edit_7.returnPressed.connect(lambda: do_action())
+    self.line_edit_3x1.returnPressed.connect(lambda: do_action())
+    # # creating a QLineEdit object
+    # self.line_edit_3x2 = QtWidgets.QLineEdit(self)
+    # # setting geometry
+    # self.line_edit_3x2.setGeometry(80*2, 80*3, 80, 80)
+    # # adding action to the line edit when enter key is pressed
+    # self.line_edit_3x2.returnPressed.connect(lambda: do_action())
     # creating a QLineEdit object
-    self.line_edit_8 = QtWidgets.QLineEdit(self)
-    # setting geometry
-    self.line_edit_8.setGeometry(80*2, 80*3, 80, 80)
-    # adding action to the line edit when enter key is pressed
-    self.line_edit_8.returnPressed.connect(lambda: do_action())
-    # creating a QLineEdit object
-    self.line_edit_9 = QtWidgets.QLineEdit(self)
-    # setting geometry
-    self.line_edit_9.setGeometry(80*3, 80*3, 80, 80)
-    # adding action to the line edit when enter key is pressed
-    self.line_edit_9.returnPressed.connect(lambda: do_action())
+    # self.line_edit_3x3 = QtWidgets.QLineEdit(self)
+    # # setting geometry
+    # self.line_edit_3x3.setGeometry(80*3, 80*3, 80, 80)
+    # # adding action to the line edit when enter key is pressed
+    # self.line_edit_3x3.returnPressed.connect(lambda: do_action())
 
     # self.line_edit_1.setText("1")
     

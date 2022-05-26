@@ -126,7 +126,7 @@ def generate(size):
         csize = len(cliques[-1])
         if csize == 1:
             cell = cliques[-1][0]
-            cliques[-1] = ((cell, ), '.', board[cell])
+            cliques[-1] = ((cell, ), '+', board[cell])
             continue
         elif csize == 2:
             fst, snd = cliques[-1][0], cliques[-1][1]
@@ -143,4 +143,4 @@ def generate(size):
 
     return size, cliques
 
-print(generate(3))
+# print(generate(3))
