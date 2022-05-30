@@ -16,10 +16,7 @@ from csv import writer
 
 
 def opp(operation):
-    """
-     function used in order to determine the opp corresponding
-
-    """
+  
     if operation == '+':
         return lambda a, b: a + b
     elif operation == '-':
