@@ -1,6 +1,6 @@
 
 from unittest import runner
-import csp
+import src.csp as csp
 
 # @ <component>: <usage>
 
@@ -129,7 +129,7 @@ def generate(size):
         csize = len(cliques[-1])
         if csize == 1:
             cell = cliques[-1][0]
-            cliques[-1] = ((cell, ), '.', board[cell])
+            cliques[-1] = ((cell, ), '+', board[cell]) #replace . -> +
             continue
         elif csize == 2:
             fst, snd = cliques[-1][0], cliques[-1][1]
@@ -506,17 +506,17 @@ def gather(iterations, out):
                 out.writerow([name, size, checks, assignments, dt])
 
     
-def runner(x, algorithm):
-            size, cliques = generate(x)
-            ken = Kenken(size, cliques)
+def runner(x, algorithm, cliques):
+            # size, cliques = generate(x)
+            ken = Kenken(x, cliques)
             if(algorithm == "BT"):
                 answer = csp.backtracking_search(ken)
             if(algorithm == "BTF"):
-                answer = csp.backtracking_search(ken, inference=csp.fc)
+                answer = csp.backtracking_search(ken, inference=csp.forward_checking)
             if(algorithm == "BTARC"):
                 answer = csp.backtracking_search(ken, inference=csp.mac)
             
-            return cliques, answer
+            return answer
 
 if __name__ == "__main__":
 

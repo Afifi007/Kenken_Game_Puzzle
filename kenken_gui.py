@@ -10,18 +10,23 @@
 from PyQt5.QtWidgets import QComboBox, QVBoxLayout
 from PyQt5 import QtCore, QtGui, QtWidgets
 import kenken_board
+import src.kenken as ken
 
 class Ui_Form(object):
     size = 3
     content = "Algo"
-    def clicked(self):
-        # finding the content of current item in combo box
+    cliques = {}
+
+    def clear(self):
+        self.content = "Algo"
+        self.cliques = {}
+        kenken_board.clear_me(self.size)
+
+
+
+    def load(self):
         self.content = self.combobox_1.currentText()
-        # print("Content of current item")
-        # print(self.content)
-        # if self.content == "BT":
-        #     print(self.content)
-        
+
         if self.radioButton.isChecked():
             self.size = 3
         if self.radioButton_2.isChecked():
@@ -36,7 +41,10 @@ class Ui_Form(object):
             self.size = 8
         if self.radioButton_7.isChecked():
             self.size = 9
-        kenken_board.game_loop(self.size)
+        self.size, self.cliques = kenken_board.game_loop_2(self.size)
+
+    def clicked(self):
+        kenken_board.game_loop(self.size,self.content,self.cliques)
     
     def take_n(self):
         return self.size
@@ -130,8 +138,10 @@ class Ui_Form(object):
         font.setWeight(75)
         self.radioButton_6.setFont(font)
         self.radioButton_6.setObjectName("radioButton_6")
+
+        #Solve btn
         self.next_btn = QtWidgets.QPushButton(self.widget)
-        self.next_btn.setGeometry(QtCore.QRect(420+70, 500, 101, 41))
+        self.next_btn.setGeometry(QtCore.QRect(420, 500, 101, 41))
         font = QtGui.QFont()
         font.setFamily("MS Sans Serif")
         font.setPointSize(16)
@@ -140,10 +150,32 @@ class Ui_Form(object):
         # self.next_btn.setFont(font)
         self.next_btn.setObjectName("next_btn")
 
+        # Add clear btn
+        self.clear_btn = QtWidgets.QPushButton(self.widget)
+        self.clear_btn.setGeometry(QtCore.QRect(60, 500, 101, 41))
+        font = QtGui.QFont()
+        font.setFamily("MS Sans Serif")
+        font.setPointSize(16)
+        font.setBold(True)
+        font.setWeight(75)
+        # self.next_btn.setFont(font)
+        self.clear_btn.setObjectName("clear_btn")
+
+        # Add load btn
+        self.load_btn = QtWidgets.QPushButton(self.widget)
+        self.load_btn.setGeometry(QtCore.QRect(250, 500, 101, 41))
+        font = QtGui.QFont()
+        font.setFamily("MS Sans Serif")
+        font.setPointSize(16)
+        font.setBold(True)
+        font.setWeight(75)
+        # self.next_btn.setFont(font)
+        self.load_btn.setObjectName("load_btn")
+
         # combo box
         
         self.combobox_1 = QComboBox(self.widget)
-        self.combobox_1.addItems(['BT', 'BT&F', 'BT&Arch'])
+        self.combobox_1.addItems(['BT', 'BTF', 'BTARC'])
         self.combobox_1.setGeometry(250+50, 410, 150, 41)
         # self.combobox_1.setFont(font)
         font_1 = QtGui.QFont()
@@ -153,6 +185,8 @@ class Ui_Form(object):
         font_1.setWeight(75)
         self.combobox_1.setFont(font_1)
         self.next_btn.setFont(font_1)
+        self.load_btn.setFont(font_1)
+        self.clear_btn.setFont(font_1)
         layout = QVBoxLayout()
         layout.addWidget(self.combobox_1)
 
@@ -176,8 +210,12 @@ class Ui_Form(object):
         self.radioButton_3.setText(_translate("Form", "7 x 7"))
         self.label.setText(_translate("Form", "Welcom To Kenken Game"))
         self.radioButton_6.setText(_translate("Form", "6 x 6"))
-        self.next_btn.setText(_translate("Form", "Next"))
+        self.next_btn.setText(_translate("Form", "Solve"))
+        self.load_btn.setText(_translate("Form", "Load"))
+        self.clear_btn.setText(_translate("Form", "Clear"))
         self.next_btn.clicked.connect(self.clicked)
+        self.load_btn.clicked.connect(self.load)
+        self.clear_btn.clicked.connect(self.clear)
         self.label_b.setText(_translate("Form", "Choose Algorithm:"))
 
 

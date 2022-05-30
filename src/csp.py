@@ -1,7 +1,7 @@
 """CSP (Constraint Satisfaction Problems) problems and solvers. (Chapter 6)."""
 
 
-import search
+import src.search as search
 
 # from collections import defaultdict
 # from functools import reduce

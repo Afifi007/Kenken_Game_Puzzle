@@ -1,4 +1,0 @@
-- To convert .ui file to a python file:
-1- open cmd in the file directory
-2-python -m PyQt5.uic.pyuic -x [FILENAME].ui -o [FILENAME].py (work for me)
-3-pyuic5 -x fileName.ui -o outFileName.py (not work for me)
