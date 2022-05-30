@@ -2,27 +2,16 @@
 from unittest import runner
 import src.csp as csp
 
-# @ <component>: <usage>
-
-# @ stderr: reporting errors
-# @ stdin: receiving input
 from sys import stderr
 
-# @ product: creation of the Var' domains
-# @ permutations: determine the satisfiability of an operation
 from itertools import product, permutations
 
-# @ reduce: determine the result of an operation
 from functools import reduce
 
-# @ seed: seed the pseudorandom number generator
-# @ random, shuffle, randint, choice: generation a random kenken puzzle
 from random import random, shuffle, randint, choice
 
-# @ time: benchmarking
 from time import time
 
-# @ writer: output benchmarking data in a csv format
 from csv import writer
 
 
