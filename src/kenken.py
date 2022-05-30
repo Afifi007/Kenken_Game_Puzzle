@@ -1,4 +1,5 @@
 
+from unittest import runner
 import csp
 
 # @ <component>: <usage>
@@ -23,6 +24,7 @@ from time import time
 
 # @ writer: output benchmarking data in a csv format
 from csv import writer
+
 
 def operation(operator):
     """
@@ -503,6 +505,19 @@ def gather(iterations, out):
                     
                 out.writerow([name, size, checks, assignments, dt])
 
+    
+def runner(x, algorithm):
+            size, cliques = generate(x)
+            ken = Kenken(size, cliques)
+            if(algorithm == "BT"):
+                answer = csp.backtracking_search(ken)
+            if(algorithm == "BTF"):
+                answer = csp.backtracking_search(ken, inference=csp.fc)
+            if(algorithm == "BTARC"):
+                answer = csp.backtracking_search(ken, inference=csp.mac)
+            
+            return cliques, answer
+
 if __name__ == "__main__":
 
     # gather(3, "kenken.csv")
@@ -526,18 +541,24 @@ if __name__ == "__main__":
     #     "(((6, 5), (6, 6)), '+', 9)\n"
 
     # size, cliques = parse(example)
-    size, cliques = generate(3)
+    
+
+    x, y = runner(3, "BT")
+    print(x,y)
+
+
+    size, cliques = generate(7)
 
     # size, cliques = parse(list(stdin))
 
-    print("this is cliques", cliques)
+    # print("this is cliques", cliques)
     ken = Kenken(size, cliques)
 
-    gather(10, "output.csv")
+    # gather(10, "output.csv")
 
     
     # assignment = csp.backtracking_search(ken)
     # assignment = csp.backtracking_search(ken, inference=csp.fc)
     assignment = csp.backtracking_search(ken, inference=csp.mac)
-
-    ken.display(assignment)
+    # print("this is the answer", assignment)
+    # ken.display(assignment)
