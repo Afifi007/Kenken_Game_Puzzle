@@ -99,7 +99,7 @@ class CSP(search.Problem):
         self.curr_domains[var].remove(value)
         if removals is not None:
             removals.append((var, value))
- def choices(self, var):
+    def choices(self, var):
         return (self.curr_domains or self.domains)[var]
 
     def restore(self, removals):
