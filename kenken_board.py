@@ -140,7 +140,7 @@ def clear_me(n):
   pg.display.update()
 
 def game_loop_2(n):
-  size, cliques = ken.generate(n)
+  size, cliques = ken.generation(n)
   size_2 = 720/n
   draw_background(size_2)
   list_num =[]

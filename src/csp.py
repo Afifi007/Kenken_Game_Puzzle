@@ -1,5 +1,5 @@
 
-import src.search as search
+
 
 import random
 
@@ -31,7 +31,7 @@ def is_in(elt, seq):
 def count(seq):
     return sum(bool(x) for x in seq)
 
-class CSP(search.Problem):
+class CSP():
 
     def __init__(self, variables, domains, neighbors, constraints):
         variables = variables or list(domains.keys())
