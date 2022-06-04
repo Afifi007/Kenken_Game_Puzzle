@@ -72,10 +72,10 @@ color_list = [
 ]
 
 def draw_op(size ,li_num,lis_op,lis_cells):
-  font_size_2 = int(size / 7)
+  font_size_2 = int(size / 4)
   font1 = pg.font.SysFont(None, font_size_2)
 
-  offset = 30
+  offset = 20
   for i in range(0,len(lis_cells)):
       op = lis_op[i]
       op_value = li_num [i]
@@ -107,7 +107,7 @@ def draw_background(size):
 
 
 def draw_numbers(size ,li_num,lis_cells):
-  font_size_1 = int(size / 6)
+  font_size_1 = int(size / 3)
   font = pg.font.SysFont(None, font_size_1)
   offset = (size/2)
   for i in range(0,len(lis_cells)):
